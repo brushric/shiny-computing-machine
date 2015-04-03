@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/layoutland"
+    android:focusableInTouchMode="true"
+    style="@style/SkyTheme">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/frameLayout"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:id="@+id/textView"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/first_name"
+            android:id="@+id/textP1"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/second_name"
+            android:id="@+id/textP2"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerOneName"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:freezesText="true"
+            android:hint="@string/name"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:layout_weight="1"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerTwoName"
+            android:freezesText="true"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:hint="@string/name"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:layout_weight="1"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".75"
+        android:id="@+id/frameSpacer">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:text="@string/start"
+            android:id="@+id/buttonStart"
+            android:layout_gravity="center"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:onClick="onStart"
+            android:nestedScrollingEnabled="false" />
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spacer1"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageOstrich"
+                android:contentDescription="@string/ostrich"
+                android:src="@drawable/ostrich"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/how_to"
+            android:id="@+id/buttonStart"
+            android:layout_gravity="center"
+            android:textSize="@dimen/abc_text_size_subhead_material"
+            android:onClick="onHelp"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
+
+</LinearLayout>

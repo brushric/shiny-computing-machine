@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.msu.brushric.theflockinggame.GameActivity"
+    android:id="@+id/layoutGame"
+    android:focusableInTouchMode="false"
+    android:orientation="horizontal">
+
+    <view
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        class="edu.msu.brushric.theflockinggame.GameView"
+        android:id="@+id/gameView"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/place"
+            android:id="@+id/buttonPlace"
+            android:onClick="onPlace"
+            android:layout_below="@+id/gap"
+            android:layout_centerHorizontal="true"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/gap"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerName"
+            android:layout_above="@id/gap"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</LinearLayout>

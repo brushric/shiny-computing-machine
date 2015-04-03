@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="edu.msu.brushric.theflockinggame.SelectionActivity"
+android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_bird_title"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/title"
+        android:textIsSelectable="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/playerNumber"
+        android:textIsSelectable="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/robin"
+            android:layout_gravity="center_vertical"
+            android:onClick="onSelectRobin"
+            android:contentDescription="@string/robin"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView5"
+            android:src="@drawable/ostrich"
+            android:adjustViewBounds="true"
+            android:onClick="onSelectOstritch"
+            android:contentDescription="@string/ostrich"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/bananaquit"
+            android:layout_gravity="center_vertical"
+            android:onClick="onSelectBananaquit"
+            android:contentDescription="@string/bananaquit"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/imageView2"
+            android:src="@drawable/parrot"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="false"
+            android:onClick="onSelectParrot"
+            android:contentDescription="@string/parrot"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/spacer"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@drawable/seagull"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:onClick="onSelectSeagull"
+            android:contentDescription="@string/seagull"/>
+
+    </LinearLayout>
+
+</LinearLayout>

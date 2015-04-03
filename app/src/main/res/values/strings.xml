@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">The Flocking Game</string>
+    <string name="welcome">Welcome to the Flocking Game!</string>
+    <string name="first_name">Player One</string>
+    <string name="second_name">Player Two</string>
+    <string name="start">Start Game</string>
+    <string name="name">Name Here</string>
+    <string name="wins">Winner: </string>
+    <string name="score">Score:</string>
+    <string name="title_activity_selection">Bird Selection</string>
+    <string name="title_activity_game">Bird Placement</string>
+    <string name="place">Place Bird</string>
+    <string name="title_activity_win">Game Over</string>
+    <string name="reset">Reset Game</string>
+    <string name="select_bird_title">Click on the bird you want</string>
+    <string name="bananaquit">Bananaquit</string>
+    <string name="parrot">Parrot</string>
+    <string name="robin">Robin</string>
+    <string name="seagull">Seagull</string>
+    <string name="ostrich">Ostrich</string>
+    <string name="how_to">How To Play</string>
+    <string name="help_text">The object of the game is to be the last one to place a bird on the screen.
+        If the bird you place overlaps or is out of the frame, you lose.
+        To play, enter player 1 and player 2 names, then press start game.
+        Players will then select the bird they wish to place on the screen.
+        Player one will select firs then pass the phone to player 2 who will also pick a bird.
+        Once both birds are selected player 1 will place their bird then player 2.</string>
+    <string name="selecting">Currently Selecting: </string>
+    <string name="placing">Currently Placing: </string>
+
+</resources>
