@@ -2,10 +2,13 @@ package edu.msu.brushric.theflockinggame;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -22,19 +25,18 @@ public class WelcomeActivity extends ActionBarActivity {
      */
     private GameManager manager = new GameManager();
 
-    /**
-     * text views that contain player one and two names
-     */
-    TextView playerOne, playerTwo;
+    private UserLoginTask mAuthTask = null;
+
+    private EditText mUserView;
+    private EditText mPasswordView;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_welcome);
 
-        // set the two player name text boxes
-        playerOne = (TextView) findViewById(R.id.playerOneName);
-        playerTwo = (TextView) findViewById(R.id.playerTwoName);
+        mUserView = (EditText) findViewById(R.id.usernameText);
+        mPasswordView = (EditText) findViewById(R.id.passwordText);
     }
 
     /**
@@ -44,7 +46,7 @@ public class WelcomeActivity extends ActionBarActivity {
      * start the selection activity
      * @param view that was clicked
      */
-    public void onStart(View view) {
+    /*public void onStart(View view) {
         Intent intent = new Intent(this, SelectionActivity.class);
         Bundle b = new Bundle();
 
@@ -59,10 +61,10 @@ public class WelcomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
 
-            else ShowTost(2);
+            else ShowToast(2);
         }
-        else ShowTost(1);
-    }
+        else ShowToast(1);
+    }*/
 
     /**
      * on click function for the help button
@@ -84,16 +86,99 @@ public class WelcomeActivity extends ActionBarActivity {
     }
 
     /**
-     * Shows a tost to tell the user to enter a players name
-     * @param player who needs to enter a name
+     * Shows a toast to tell the user to enter a username/pass
+     * @param field which field
      */
-    private void ShowTost(int player){
+    private void ShowToast(int field){
         // set the message for the toast
         String message;
-        if (player ==  1) message = "Please enter name for player 1.";
-        else message = "Please enter name for player 2.";
+        if (field ==  0) message = "Please enter a username.";
+        else if(field == 1) message = "Please enter a password.";
+        else message = "Incorrect username or password.";
 
         // create and show the toast
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * User presses new user, send them to new activity
+     */
+    public void onNewUser(View view) {
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * User presses log in, does basic check on username/pass before
+     * beginning authentication task
+     */
+    public void onLogIn(View view) {
+        if (mAuthTask != null) {
+            return;
+        }
+
+        // Store values at the time of the login attempt.
+        String username = mUserView.getText().toString();
+        String password = mPasswordView.getText().toString();
+
+        boolean cancel = false;
+
+        // Check for a valid username/pass
+        if (TextUtils.isEmpty(username)) {
+            ShowToast(0);
+            cancel = true;
+        }
+        if (TextUtils.isEmpty(password)) {
+            ShowToast(1);
+            cancel = true;
+        }
+
+        // only continue to auth if not canceled
+        if(!cancel) {
+            mAuthTask = new UserLoginTask(username, password);
+            mAuthTask.execute((Void) null);
+        }
+    }
+
+
+    /**
+     * Attempts user log in through a task
+     */
+    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+
+        private final String mUser;
+        private final String mPassword;
+
+        UserLoginTask(String user, String password) {
+            mUser = user;
+            mPassword = password;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            // TODO: attempt authentication using mUser and mPassword, if failure, return false
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mAuthTask = null;
+
+            if (success) {
+                goToWait();
+            } else {
+                ShowToast(2);
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            mAuthTask = null;
+        }
+    }
+
+    public void goToWait() {
+        Intent intent = new Intent(this, WaitActivity.class);
+        startActivity(intent);
     }
 }

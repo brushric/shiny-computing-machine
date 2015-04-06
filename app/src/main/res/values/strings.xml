@@ -29,5 +29,17 @@
         Once both birds are selected player 1 will place their bird then player 2.</string>
     <string name="selecting">Currently Selecting: </string>
     <string name="placing">Currently Placing: </string>
+    <string name="prompt_user">Username </string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_user">New User</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_again">Password Again</string>
+    <string name="title_activity_wait">Wait</string>
+
+    <string name="wait_text">Waiting for player 2 (end of checkpoint)</string>
+    <string name="title_activity_new_user">Create New User</string>
+
+    <string name="new_user_header">Create New User</string>
+    <string name="create_user">Create</string>
 
 </resources>
