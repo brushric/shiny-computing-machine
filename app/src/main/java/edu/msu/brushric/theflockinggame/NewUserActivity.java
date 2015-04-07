@@ -74,7 +74,7 @@ public class NewUserActivity extends ActionBarActivity {
             ShowToast(1);
             cancel = true;
         }
-        if(password2 != password1) {
+        if(!password2.equals(password1)) {
             ShowToast(3);
             cancel = true;
         }
