@@ -74,6 +74,7 @@ public class NewUserActivity extends ActionBarActivity {
             cancel = true;
         }
 
+        final View finalView = view;
         // add user in new thread
         new Thread(new Runnable() {
             @Override
@@ -82,12 +83,18 @@ public class NewUserActivity extends ActionBarActivity {
                     return;
 
                 Cloud cloud = new Cloud();
-                boolean ok = cloud.addNewUser(username, password1);
-                if(!ok){
-                    ShowToast(2);
-                } else {
-                    goBack();
-                }
+                final boolean ok = cloud.addNewUser(username, password1);
+
+                finalView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!ok){
+                            ShowToast(2);
+                        } else {
+                            goBack();
+                        }
+                    }
+                });
             }
         }).start();
     }

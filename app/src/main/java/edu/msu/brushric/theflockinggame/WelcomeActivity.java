@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.logging.Handler;
+
 
 public class WelcomeActivity extends ActionBarActivity {
 
@@ -28,6 +30,7 @@ public class WelcomeActivity extends ActionBarActivity {
     private EditText mUserView;
     private EditText mPasswordView;
     private volatile boolean cancel = false;
+
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -129,21 +132,28 @@ public class WelcomeActivity extends ActionBarActivity {
             cancel = true;
         }
 
+        final View finalView = view;
         // only continue to auth if not canceled
         new Thread(new Runnable() {
-
             @Override
             public void run() {
                 if(cancel)
                     return;
 
                 Cloud cloud = new Cloud();
-                boolean ok = cloud.loginUser(username, password);
-                if(!ok){
-                    ShowToast(2);
-                } else {
-                    goToWait();
-                }
+                final boolean ok = cloud.loginUser(username, password);
+
+                finalView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!ok){
+                            ShowToast(2);
+                        } else {
+                            goToWait();
+                        }
+                    }
+                });
+
             }
         }).start();
 
