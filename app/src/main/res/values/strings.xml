@@ -41,5 +41,6 @@
 
     <string name="new_user_header">Create New User</string>
     <string name="create_user">Create</string>
+    <string name="remember">Remember</string>
 
 </resources>

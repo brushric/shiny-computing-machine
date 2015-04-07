@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textAlignment="center"
         android:id="@+id/frameLayout"
         android:layout_weight="1">
@@ -26,36 +26,24 @@
     </FrameLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".5">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/first_name"
-            android:id="@+id/textP1"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="@dimen/abc_text_size_subhead_material"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:textStyle="bold" />
+            android:id="@+id/usernameText"
+            android:hint="@string/prompt_user" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/second_name"
-            android:id="@+id/textP2"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="@dimen/abc_text_size_subhead_material"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textStyle="bold" />
+            android:id="@+id/passwordText"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
@@ -63,56 +51,50 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5">
+        android:layout_weight=".5"
+        android:gravity="center_horizontal">
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerOneName"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:freezesText="true"
-            android:hint="@string/name"
+            android:text="@string/new_user"
+            android:id="@+id/buttonNewUser"
             android:textSize="@dimen/abc_text_size_subhead_material"
-            android:layout_weight="1"
-            android:layout_gravity="center" />
+            android:onClick="onNewUser"
+            android:nestedScrollingEnabled="false" />
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerTwoName"
-            android:freezesText="true"
-            android:gravity="center"
-            android:inputType="textPersonName"
-            android:hint="@string/name"
+            android:text="@string/sign_in"
+            android:id="@+id/buttonLogIn"
             android:textSize="@dimen/abc_text_size_subhead_material"
-            android:layout_weight="1"
-            android:layout_gravity="center" />
-
+            android:onClick="onLogIn"
+            android:nestedScrollingEnabled="false" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".75"
-        android:id="@+id/frameSpacer">
+        android:layout_weight="1"
+        android:id="@+id/frameSpacer"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp">
 
         <Button
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="20dp"
-            android:text="@string/start"
-            android:id="@+id/buttonStart"
+            android:text="@string/how_to"
+            android:id="@+id/buttonHowToPlay"
             android:layout_gravity="center"
             android:textSize="@dimen/abc_text_size_subhead_material"
-            android:onClick="onStart"
+            android:onClick="onHelp"
             android:nestedScrollingEnabled="false" />
+
         <FrameLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/spacer1"
-            android:layout_weight="1">
+            android:id="@+id/spacer1">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -121,20 +103,22 @@
                 android:contentDescription="@string/ostrich"
                 android:src="@drawable/ostrich"
                 android:layout_gravity="center" />
+
         </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/spacer2">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="@string/how_to"
-            android:id="@+id/buttonStart"
-            android:layout_gravity="center"
-            android:textSize="@dimen/abc_text_size_subhead_material"
-            android:onClick="onHelp"
-            android:nestedScrollingEnabled="false" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember"
+                android:id="@+id/checkBox"
+                android:layout_gravity="center_vertical" />
+        </FrameLayout>
+
 
     </LinearLayout>
 
