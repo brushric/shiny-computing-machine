@@ -103,7 +103,11 @@ public class NewUserActivity extends ActionBarActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt to create user using mUser and mPassword, if failure, return false
-
+            Cloud cloud = new Cloud();
+            boolean ok = cloud.addNewUser(mUser, mPassword);
+            if(!ok){
+                return false;
+            }
             return true;
         }
 

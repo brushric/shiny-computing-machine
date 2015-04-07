@@ -157,6 +157,11 @@ public class WelcomeActivity extends ActionBarActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication using mUser and mPassword, if failure, return false
+            Cloud cloud = new Cloud();
+            boolean ok = cloud.loginUser(mUser, mPassword);
+            if(!ok){
+                return false;
+            }
             return true;
         }
 
