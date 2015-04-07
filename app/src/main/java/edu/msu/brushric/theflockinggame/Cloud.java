@@ -234,7 +234,7 @@ public class Cloud {
      */
     public boolean loginUser(String user, String password) {
         // Create a get query
-        String query = LOGIN_URL + "?user=" + user + "&magic=" + MAGIC + "&pw=" + password;
+        String query = LOGIN_URL + "?user=" + user + "&magic=" + MAGIC + "&password=" + password;
 
         try {
             URL url = new URL(query);
@@ -262,7 +262,7 @@ public class Cloud {
      */
     public boolean addNewUser(String user, String password) {
         // Create a get query
-        String query = NEW_USER_URL + "?user=" + user + "&magic=" + MAGIC + "&pw=" + password;
+        String query = NEW_USER_URL + "?user=" + user + "&magic=" + MAGIC + "&password=" + password;
 
         try {
             URL url = new URL(query);

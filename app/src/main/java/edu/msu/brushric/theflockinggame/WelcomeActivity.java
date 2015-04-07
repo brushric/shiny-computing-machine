@@ -25,10 +25,9 @@ public class WelcomeActivity extends ActionBarActivity {
      */
     private GameManager manager = new GameManager();
 
-    private UserLoginTask mAuthTask = null;
-
     private EditText mUserView;
     private EditText mPasswordView;
+    private volatile boolean cancel = false;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -113,15 +112,12 @@ public class WelcomeActivity extends ActionBarActivity {
      * beginning authentication task
      */
     public void onLogIn(View view) {
-        if (mAuthTask != null) {
-            return;
-        }
 
         // Store values at the time of the login attempt.
-        String username = mUserView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String username = mUserView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
-        boolean cancel = false;
+        cancel = false;
 
         // Check for a valid username/pass
         if (TextUtils.isEmpty(username)) {
@@ -134,52 +130,23 @@ public class WelcomeActivity extends ActionBarActivity {
         }
 
         // only continue to auth if not canceled
-        if(!cancel) {
-            mAuthTask = new UserLoginTask(username, password);
-            mAuthTask.execute((Void) null);
-        }
-    }
+        new Thread(new Runnable() {
 
+            @Override
+            public void run() {
+                if(cancel)
+                    return;
 
-    /**
-     * Attempts user log in through a task
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mUser;
-        private final String mPassword;
-
-        UserLoginTask(String user, String password) {
-            mUser = user;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication using mUser and mPassword, if failure, return false
-            Cloud cloud = new Cloud();
-            boolean ok = cloud.loginUser(mUser, mPassword);
-            if(!ok){
-                return false;
+                Cloud cloud = new Cloud();
+                boolean ok = cloud.loginUser(username, password);
+                if(!ok){
+                    ShowToast(2);
+                } else {
+                    goToWait();
+                }
             }
-            return true;
-        }
+        }).start();
 
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-
-            if (success) {
-                goToWait();
-            } else {
-                ShowToast(2);
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-        }
     }
 
     public void goToWait() {
