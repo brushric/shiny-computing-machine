@@ -1,0 +1,64 @@
+
+Project 2 Submission
+
+Group Name:   Toucan
+When you have completed the project, complete the following form and include it with your project. Include this file as a text file in the folder with your project when you turn it in. 
+
+For the Checkpoint, Describe a sequence of operations to create a new account and log onto the server:
+
+On the welcome screen, click the button labeled "New User".
+Fill out the required information (username, password, and password confirmation).
+If the account is successfully added, you will be brought back to the welcome screen.
+If not, you will be able to try to create an account again.
+Once an account has been created and you are back on the welcome screen, enter your account name and password.
+Click "Sign In" to login and proceed to the dummy activity.
+
+A functionality checklist will not be provided for the project. Treat this as you would a request from a client and identify what the client requires. 
+
+Member 1: Kevin Pauly
+
+Responsiblity: The opening activity and the new user activity.
+
+
+
+Member 2: Brandon Sartele
+
+Responsiblity: The ability to create a user. - server side
+	       The ability for the user to log into the system. - server side
+
+
+
+Member 3: Richard Brush
+
+Responsiblity: The ability to create a user. - client side
+	       The ability for the user to log into the system. - client side
+
+
+
+Member 4 (if applicable): N/A
+
+Responsiblity:
+
+
+Provide instructions on how to reach the first editing activity if the login button is not yet functional.
+
+User account the server-side communications is running under: sarteleb
+
+Paths to all server-side scripts: (Such as https://www.cse.msu.edu/~carter/project2/login.php).
+
+New User:
+http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-new-user.php
+
+Login:
+http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-login.php
+
+Where in the code the passive connection timeout is set (provide a script name and line number):
+
+Not implemented in the checkpoint
+
+Calls in the code to the server (provide a class name and function, or URL used for debugging): 
+
+Class: Cloud.java
+Functions: addNewUser(String user, String password) starts on line 114
+	   loginUser(String user, String password)  starts on line 63
+
