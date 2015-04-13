@@ -6,6 +6,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
+
 
 /**
  * Custom view class for our Puzzle.
@@ -50,4 +56,11 @@ public class GameView extends View {
         return game;
     }
 
+    public void saveXml(XmlSerializer xml) throws IOException {
+        game.saveXml(xml);
+    }
+
+    public void loadXml(XmlPullParser xml)throws IOException, XmlPullParserException {
+        game.loadXml(xml);
+    }
 }
