@@ -36,6 +36,7 @@ public class Cloud {
     private static final String NEW_USER_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-new-user.php";
     private static final String LOAD_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-load.php";
     private static final String SAVE_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-save.php";
+    private static final String POLLING_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-poll.php";
     private static final String UTF8 = "UTF-8";
 
     /**
@@ -111,7 +112,7 @@ public class Cloud {
     }
 
     /**
-     * Login as a user in the cloud.
+     * Add a user to the database.
      * @return reference to an input stream or null if this fails
      */
     public boolean addNewUser(String user, String password) {
@@ -161,7 +162,39 @@ public class Cloud {
         }
     }
 
-    public boolean saveToCloud(GameView view, String user, String password) {
+    /**
+     * Grabs the current state of the game board
+     * @return reference to an input stream or null if this fails
+     */
+    public InputStream loadBoard(GameView view, String user)  {
+        // Create a get query
+        String query = LOAD_URL + "?user=" + user + "&magic=" + MAGIC;
+
+        try {
+            URL url = new URL(query);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            int responseCode = conn.getResponseCode();
+            if(responseCode != HttpURLConnection.HTTP_OK) {
+                return null;
+            }
+
+            InputStream stream = conn.getInputStream();
+            return stream;
+
+        } catch (MalformedURLException e) {
+            // Should never happen
+            return null;
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
+    /**
+     * Saves the current state of the game bird
+     * @return True if the save works, false otherwise
+     */
+    public boolean saveBoard(GameView view, String user) {
         // Create an XML packet with the information about the current image
         XmlSerializer xml = Xml.newSerializer();
         StringWriter writer = new StringWriter();
@@ -173,7 +206,6 @@ public class Cloud {
 
             xml.startTag(null, "birds");
             xml.attribute(null, "user", user);
-            //xml.attribute(null, "pw", password);
             xml.attribute(null, "magic", MAGIC);
 
             view.saveXml(xml);
@@ -268,5 +300,56 @@ public class Cloud {
             }
         }
         return true;
+    }
+
+    /**
+     * Polls the server waiting for the board to be updated
+     * @return true if the board has been updated, false otherwise
+     */
+    public boolean serverPoll() {
+        // Create a get query
+        String query = POLLING_URL + "magic=" + MAGIC;
+
+        try {
+            URL url = new URL(query);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            int responseCode = conn.getResponseCode();
+            if(responseCode != HttpURLConnection.HTTP_OK) {
+                return false;
+            }
+
+            InputStream stream = conn.getInputStream();
+
+            /**
+             * Create an XML parser for the result
+             */
+            try {
+                XmlPullParser xmlR = Xml.newPullParser();
+                xmlR.setInput(stream, UTF8);
+
+                xmlR.nextTag();      // Advance to first tag
+                xmlR.require(XmlPullParser.START_TAG, null, "toucan");
+
+                String status = xmlR.getAttributeValue(null, "status");
+                if(status.equals("no")) {
+                    return false;
+                }
+
+                // We are done
+            } catch(XmlPullParserException ex) {
+                return false;
+            } catch(IOException ex) {
+                return false;
+            }
+            stream.close();
+            return true;
+
+        } catch (MalformedURLException e) {
+            // Should never happen
+            return false;
+        } catch (IOException ex) {
+            return false;
+        }
     }
 }

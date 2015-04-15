@@ -224,8 +224,6 @@ public class Game {
     }
 
     public void saveXml(XmlSerializer xml) throws IOException {
-
-
         for ( BirdPiece item : birds) {
             xml.startTag(null, "bird");
             xml.attribute(null, "type", Integer.toString(item.getType()));
@@ -233,8 +231,6 @@ public class Game {
             xml.attribute(null, "y", Integer.toString(item.getType()));item.getY();
             xml.endTag(null,  "bird");
         }
-
-
     }
 
     public void loadXml(XmlPullParser xml) throws IOException, XmlPullParserException {
@@ -242,9 +238,6 @@ public class Game {
 
         // Create a new set of birds
         //final ArrayList<BirdPiece> newBirds = new ArrayList<BirdPiece>();
-
-
-
 
         //final BirdPiece piece = new BirdPiece(gameActivity, item.getType());
 //        final Parameters newParams = new Parameters();
