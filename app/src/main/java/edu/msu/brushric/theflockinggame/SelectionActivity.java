@@ -1,8 +1,12 @@
 package edu.msu.brushric.theflockinggame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,17 +30,7 @@ public class SelectionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
-        // set the player name text view to the correct player
-        TextView playerName = (TextView) findViewById(R.id.playerNumber);
-        String userName;
-        // set the persons name
-        if ((manager.getPlayerOneBird() == 0)  && manager.GetPlayerOneFirst()
-                || !(manager.getPlayerTwoBird() == 0) && !manager.GetPlayerOneFirst())
-             userName = manager.getPlayerOneName();
-        else userName = manager.getPlayerTwoName();
-        playerName.setText(this.getString(R.string.selecting) + " " + userName);
     }
-
 
     /**
      * OnClick function if an ostritch is selected
@@ -98,16 +92,45 @@ public class SelectionActivity extends ActionBarActivity {
      */
     private void NextTurn(int player, int bird, boolean game){
         Bundle b = new Bundle();
-        Intent intent;
         if(player == 1) manager.setPlayerOneBird(bird);
         else manager.setPlayerTwoBird(bird);
 
-        b.putParcelable(WelcomeActivity.PARCELABLE, manager);
+        manager.setCurrWaitType(GameManager.PLACEMENT);
 
-        if (!game)  intent = new Intent(this, SelectionActivity.class).putExtras(b);
-        else intent = new Intent(this, GameActivity.class).putExtras(b);
+        b.putParcelable(WelcomeActivity.PARCELABLE, manager);
+        Intent intent = new Intent(this, GameActivity.class).putExtras(b);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_wait, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                logOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void logOut() {
+
+        SharedPreferences settings =
+                getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(GameManager.REMEMBER, false);
+        editor.commit();
+
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }

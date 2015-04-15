@@ -67,7 +67,9 @@
         android:text="@string/remember"
         android:id="@+id/rememberBox"
         android:layout_gravity="center_horizontal"
-        android:layout_weight=".5" />
+        android:layout_weight=".5"
+        android:onClick="onRemember"
+        android:checked="false" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -4,7 +4,9 @@
     android:layout_height="fill_parent"
     android:id="@+id/layoutland"
     android:focusableInTouchMode="true"
-    style="@style/SkyTheme">
+    style="@style/SkyTheme"
+    android:onClick="onRemember"
+    android:measureWithLargestChild="false">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -115,8 +117,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/remember"
-                android:id="@+id/checkBox"
-                android:layout_gravity="center_vertical" />
+                android:id="@+id/rememberBox"
+                android:layout_gravity="center_vertical"
+                android:onClick="onRemember" />
         </FrameLayout>
 
 

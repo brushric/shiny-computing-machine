@@ -1,8 +1,12 @@
 package edu.msu.brushric.theflockinggame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,11 +28,6 @@ public class GameActivity extends ActionBarActivity {
      */
     private Game game;
 
-    /**
-     * flag for whos turn it is
-     */
-    private boolean playerOnePlaced = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +44,22 @@ public class GameActivity extends ActionBarActivity {
             // set the manager from the bundle
             manager = b.getParcelable(WelcomeActivity.PARCELABLE);
 
-        if (!(manager.getPlayerOneBird() == 0)  && manager.GetPlayerOneFirst()
-                || manager.getPlayerTwoBird() == 0 && !manager.GetPlayerOneFirst()) {
+        if (manager.getImFirstPlayer()) {
             game.initializeBirds(manager, new BirdPiece(this, manager.getPlayerOneBird()));
         }
         else {
             game.initializeBirds(manager, new BirdPiece(this, manager.getPlayerTwoBird()));
-            playerOnePlaced = true;
         }
 
         // set the player name text view to the correct player
         TextView playerNameView = (TextView) findViewById(R.id.playerName);
-        String playerName;
+        //String playerName;
         // set the persons name
-        if (!(manager.getPlayerOneBird() == 0)  && manager.GetPlayerOneFirst()
-                || manager.getPlayerTwoBird() == 0 && !manager.GetPlayerOneFirst())
-            playerName = manager.getPlayerOneName();
-        else playerName = manager.getPlayerTwoName();
-        playerNameView.setText(this.getString(R.string.placing) + " " + playerName);
+        //if (!(manager.getPlayerOneBird() == 0)  && manager.GetPlayerOneFirst()
+        //        || manager.getPlayerTwoBird() == 0 && !manager.GetPlayerOneFirst())
+        //    playerName = manager.getPlayerOneName();
+        //else playerName = manager.getPlayerTwoName();
+        playerNameView.setText(this.getString(R.string.placing));
     }
 
     public void onPlace(View view) {
@@ -70,14 +67,13 @@ public class GameActivity extends ActionBarActivity {
 
         // Check to see if the bird being placed is out of bounds
         if (game.outOfBounds() || game.collision()) {
-            String playerName;
-            if (!(manager.getPlayerOneBird() == 0)  && manager.GetPlayerOneFirst()
-                    || manager.getPlayerTwoBird() == 0 && !manager.GetPlayerOneFirst())
-                playerName = manager.getPlayerTwoName();
-            else playerName = manager.getPlayerOneName();
 
-            manager.setPlayerWinnerName(playerName);
+            if(manager.getImFirstPlayer())
+                manager.setWinner("other player");
+            else
+                manager.setWinner("you");
 
+            // TODO: let the other player know i lost
             Intent intent = new Intent(this, WinActivity.class);
             b.putParcelable(WelcomeActivity.PARCELABLE, manager);
             intent.putExtras(b);
@@ -91,43 +87,56 @@ public class GameActivity extends ActionBarActivity {
         // Increment score because bird was placed
         manager.setScore(manager.getScore() + 1);
 
-        // determine to go to next round or end game
-        if (!playerOnePlaced && manager.GetPlayerOneFirst())
-            NextTurn(1);
-        else if (!(manager.getPlayerTwoBird() == 0) && !manager.GetPlayerOneFirst())
-            NextTurn(2);
-        else if (!playerOnePlaced && !manager.GetPlayerOneFirst())
-            NextRound(1);
-        else
-            NextRound(2);
+        NextRound();
     }
 
-    private void NextTurn(int player){
-        if (player == 1) manager.setPlayerOneBird(0);
-        else manager.setPlayerTwoBird(0);
-
+    private void NextRound(){
         Bundle b = new Bundle();
+        Intent intent;
+        // Player 1 has to wait for player 2 to choose and place
+        manager.setRound(manager.getRound() + 1);
+        if(manager.getImFirstPlayer()) {
+            intent = new Intent(this, WaitActivity.class);
+            manager.setCurrWaitType(GameManager.PLACEMENT);
+        }
+        else { // player 2 should let player 1 know he placed and then they both go to the selection (let player 1 know im now player 1)
+            intent = new Intent(this, SelectionActivity.class);
+            manager.setImFirstPlayer(true);
+        }
 
-        // add the parcable to the bundle and return to the game activity
-        Intent intent = new Intent(this, GameActivity.class);
         b.putParcelable(WelcomeActivity.PARCELABLE, manager);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtras(b);
         startActivity(intent);
     }
-    private void NextRound(int player){
-        if (player == 1) manager.setPlayerOneBird(0);
-        else manager.setPlayerTwoBird(0);
 
-        Bundle b = new Bundle();
-        Intent intent = new Intent(this, SelectionActivity.class);
-        manager.setPlayerTwoBird(0);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_wait, menu);
+        return super.onCreateOptionsMenu(menu);
 
-        // add the parcable to the bundle and go to the selection activity
-        manager.setRound(manager.getRound() + 1);
-        b.putParcelable(WelcomeActivity.PARCELABLE, manager);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                logOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void logOut() {
+
+        SharedPreferences settings =
+                getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(GameManager.REMEMBER, false);
+        editor.commit();
+
+        Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtras(b);
         startActivity(intent);
     }
 }

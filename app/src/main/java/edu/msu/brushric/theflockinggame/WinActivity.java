@@ -1,8 +1,12 @@
 package edu.msu.brushric.theflockinggame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,13 +36,19 @@ public class WinActivity extends ActionBarActivity {
             manager = b.getParcelable(WelcomeActivity.PARCELABLE);
             score =  manager.getScore();
             scoreBox.setText(getString(R.string.score) + " " + score);
-            player.setText(getString(R.string.wins) + " " + manager.getWinnerName());
+            player.setText(getString(R.string.wins) + " " + manager.getWinner());
         }
 
 
     }
 
     public void onReset(View view) {
+        SharedPreferences settings =
+                getSharedPreferences(manager.PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(manager.REMEMBER, true);
+        editor.commit();
+
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -46,5 +56,36 @@ public class WinActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_wait, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                logOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void logOut() {
+
+        SharedPreferences settings =
+                getSharedPreferences(manager.PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(manager.REMEMBER, false);
+        editor.commit();
+
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

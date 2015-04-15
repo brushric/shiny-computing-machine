@@ -12,6 +12,18 @@ import java.util.ArrayList;
  */
 public class GameManager implements Parcelable{
 
+    public static int NEWGAME = 0;
+    public static int PLACEMENT = 1;
+
+    public final static String PREFERENCES = "preferences";
+    public final static String REMEMBER = "remember";
+    public final static String USERNAME = "username";
+    public final static String PASSWORD = "password";
+
+    private int currWaitType = 0;
+    public int getCurrWaitType() { return currWaitType; }
+    public void setCurrWaitType(int type) { currWaitType = type; }
+
     public GameManager() {
     }
 
@@ -55,21 +67,19 @@ public class GameManager implements Parcelable{
         this.round = round;
     }
 
-    /**
-     * player ones name
-     */
-    private String playerOneName;
+    private boolean imFirstPlayer = true;
 
-    /**
-     * player twos name
-     */
-    private String playerTwoName;
+    public void setImFirstPlayer(boolean val) { this.imFirstPlayer = val; }
 
-    public void setPlayerWinnerName(String playerWinnerName) {
-        this.playerWinnerName = playerWinnerName;
+    public boolean getImFirstPlayer() { return imFirstPlayer; }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 
-    private String playerWinnerName;
+    public String getWinner() { return winner; }
+
+    private String winner;
 
     public ArrayList<BirdPiece> getArrayList() {
         return arrayList;
@@ -99,26 +109,6 @@ public class GameManager implements Parcelable{
         this.playerTwoBird = playerTwoBird;
     }
 
-    public String getPlayerOneName() {
-        return playerOneName;
-    }
-
-    public String getWinnerName() {
-        return playerWinnerName;
-    }
-
-    public void setPlayerOneName(String playerOneName) {
-        this.playerOneName = playerOneName;
-    }
-
-    public String getPlayerTwoName() {
-        return playerTwoName;
-    }
-
-    public void setPlayerTwoName(String playerTwoName) {
-        this.playerTwoName = playerTwoName;
-    }
-
     public boolean GetPlayerOneFirst(){ return round % 2 == 1;}
 
     @Override
@@ -128,9 +118,8 @@ public class GameManager implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(playerOneName);
-        dest.writeString(playerTwoName);
-        dest.writeString(playerWinnerName);
+        dest.writeInt(imFirstPlayer ? 1 : 0);
+        dest.writeString(winner);
         dest.writeInt(playerOneBird);
         dest.writeInt(playerTwoBird);
         dest.writeTypedList(arrayList);
@@ -157,9 +146,8 @@ public class GameManager implements Parcelable{
      * @param in a parcel to put everything into
      */
     private GameManager(Parcel in){
-        playerOneName = in.readString();
-        playerTwoName = in.readString();
-        playerWinnerName = in.readString();
+        imFirstPlayer = in.readInt() == 1;
+        winner = in.readString();
         playerOneBird = in.readInt();
         playerTwoBird = in.readInt();
         arrayList = in.createTypedArrayList(BirdPiece.CREATOR);
