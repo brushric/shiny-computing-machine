@@ -222,52 +222,5 @@ public class Game {
         }
         return false;
     }
-
-    public void saveXml(XmlSerializer xml) throws IOException {
-        for ( BirdPiece item : birds) {
-            xml.startTag(null, "bird");
-            xml.attribute(null, "type", Integer.toString(item.getType()));
-            xml.attribute(null, "x", Integer.toString(item.getType()));item.getX();
-            xml.attribute(null, "y", Integer.toString(item.getType()));item.getY();
-            xml.endTag(null,  "bird");
-        }
-    }
-
-    public void loadXml(XmlPullParser xml) throws IOException, XmlPullParserException {
-
-
-        // Create a new set of birds
-        //final ArrayList<BirdPiece> newBirds = new ArrayList<BirdPiece>();
-
-        //final BirdPiece piece = new BirdPiece(gameActivity, item.getType());
-//        final Parameters newParams = new Parameters();
-//
-//        // Load into it
-//        newParams.imageUri = xml.getAttributeValue(null, "uri");
-//        newParams.hatX = Float.parseFloat(xml.getAttributeValue(null, "x"));
-//        newParams.hatY = Float.parseFloat(xml.getAttributeValue(null, "y"));
-//        newParams.hatAngle = Float.parseFloat(xml.getAttributeValue(null, "angle"));
-//        newParams.hatScale = Float.parseFloat(xml.getAttributeValue(null, "scale"));
-//        newParams.color = Integer.parseInt(xml.getAttributeValue(null, "color"));
-//        newParams.hat = Integer.parseInt(xml.getAttributeValue(null, "type"));
-//        newParams.feather = xml.getAttributeValue(null, "feather").equals("yes");
-//
-//        post(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                params = newParams;
-//
-//                // Ensure the options are all set
-//                setColor(params.color);
-//                setImageUri(params.imageUri);
-//                setHat(params.hat);
-//                setFeather(params.feather);
-//
-//            }
-//
-//        });
-//
-    }
 }
 

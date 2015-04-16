@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +13,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class WaitActivity extends ActionBarActivity {
@@ -46,7 +53,23 @@ public class WaitActivity extends ActionBarActivity {
 
     public void executeOnDelay() {
         // TODO: poll server (happens every 10 sec)
-        delay();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Cloud cloud = new Cloud();
+                final String status = cloud.serverPoll();
+
+                if(status.equals("no")) {
+                    delay();
+                }else if(status.equals("yes")) {
+                    goToSelection();
+                }else if(status.equals("winner")) {
+                    winGame();
+                }if(status.equals("update")) {
+                    loadBoard();
+                }
+            }
+        }).start();
     }
 
     public void delay() {
@@ -109,5 +132,72 @@ public class WaitActivity extends ActionBarActivity {
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    public void winGame(){
+        manager.setWinner("you");
+        Bundle b = new Bundle();
+        Intent intent = new Intent(this, WinActivity.class);
+        b.putParcelable(WelcomeActivity.PARCELABLE, manager);
+        intent.putExtras(b);
+        startActivity(intent);
+    }
+
+    public void loadBoard(){
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                // Create a cloud object and get the XML
+                Cloud cloud = new Cloud();
+                InputStream stream = cloud.loadBoard();
+
+//                if (cancel) {
+//                    return;
+//                }
+
+                // Test for an error
+                boolean fail = stream == null;
+                if (!fail) {
+                    try {
+                        XmlPullParser xml = Xml.newPullParser();
+                        xml.setInput(stream, "UTF-8");
+
+                        xml.nextTag();      // Advance to first tag
+                        xml.require(XmlPullParser.START_TAG, null, "board");
+                        String status = xml.getAttributeValue(null, "status");
+                        if (status.equals("yes")) {
+
+                            while (xml.nextTag() == XmlPullParser.START_TAG) {
+                                if (xml.getName().equals("bird")) {
+//                                    if (cancel) {
+//                                        return;
+//                                    }
+
+                                    // load the game
+                                    manager.loadXml(xml);
+                                    break;
+                                }
+
+                                Cloud.skipToEndTag(xml);
+                            }
+                        } else {
+                            fail = true;
+                        }
+
+                    } catch (IOException ex) {
+                        fail = true;
+                    } catch (XmlPullParserException ex) {
+                        fail = true;
+                    } finally {
+                        try {
+                            stream.close();
+                        } catch (IOException ex) {
+                        }
+                    }
+                }
+            goToSelection();
+            }
+        }).start();
     }
 }

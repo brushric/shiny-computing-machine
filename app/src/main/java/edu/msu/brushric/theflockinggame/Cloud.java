@@ -166,9 +166,9 @@ public class Cloud {
      * Grabs the current state of the game board
      * @return reference to an input stream or null if this fails
      */
-    public InputStream loadBoard(GameView view, String user)  {
+    public InputStream loadBoard(){
         // Create a get query
-        String query = LOAD_URL + "?user=" + user + "&magic=" + MAGIC;
+        String query = LOAD_URL +  "&magic=" + MAGIC;
 
         try {
             URL url = new URL(query);
@@ -194,7 +194,7 @@ public class Cloud {
      * Saves the current state of the game bird
      * @return True if the save works, false otherwise
      */
-    public boolean saveBoard(GameView view, String user) {
+    public boolean saveBoard(GameManager manager) {
         // Create an XML packet with the information about the current image
         XmlSerializer xml = Xml.newSerializer();
         StringWriter writer = new StringWriter();
@@ -204,13 +204,12 @@ public class Cloud {
 
             xml.startDocument("UTF-8", true);
 
-            xml.startTag(null, "birds");
-            xml.attribute(null, "user", user);
+            xml.startTag(null, "board");
             xml.attribute(null, "magic", MAGIC);
 
-            view.saveXml(xml);
+            manager.saveXml(xml);
 
-            xml.endTag(null, "birds");
+            xml.endTag(null, "board");
 
             xml.endDocument();
 
@@ -272,7 +271,7 @@ public class Cloud {
                 xmlR.setInput(stream, UTF8);
 
                 xmlR.nextTag();      // Advance to first tag
-                xmlR.require(XmlPullParser.START_TAG, null, "birds");
+                xmlR.require(XmlPullParser.START_TAG, null, "board");
 
                 String status = xmlR.getAttributeValue(null, "status");
                 if(status.equals("no")) {
@@ -306,7 +305,7 @@ public class Cloud {
      * Polls the server waiting for the board to be updated
      * @return true if the board has been updated, false otherwise
      */
-    public boolean serverPoll() {
+    public String serverPoll() {
         // Create a get query
         String query = POLLING_URL + "magic=" + MAGIC;
 
@@ -316,7 +315,7 @@ public class Cloud {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             int responseCode = conn.getResponseCode();
             if(responseCode != HttpURLConnection.HTTP_OK) {
-                return false;
+                return "no";
             }
 
             InputStream stream = conn.getInputStream();
@@ -333,23 +332,28 @@ public class Cloud {
 
                 String status = xmlR.getAttributeValue(null, "status");
                 if(status.equals("no")) {
-                    return false;
+                    return "no";
+                }else if(status.equals("yes")) {
+                    return "yes";
+                }else if(status.equals("winner")) {
+                    return "winner";
+                }if(status.equals("update")) {
+                    return "update";
                 }
 
                 // We are done
             } catch(XmlPullParserException ex) {
-                return false;
+                return "no";
             } catch(IOException ex) {
-                return false;
+                return "no";
             }
             stream.close();
-            return true;
-
+            return "yes";
         } catch (MalformedURLException e) {
             // Should never happen
-            return false;
+            return "no";
         } catch (IOException ex) {
-            return false;
+            return "no";
         }
     }
 }

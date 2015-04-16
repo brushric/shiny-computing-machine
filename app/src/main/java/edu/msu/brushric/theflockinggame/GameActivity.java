@@ -81,7 +81,7 @@ public class GameActivity extends ActionBarActivity {
             return;
         }
 
-        // add the piece that is beeing placed to the game manager array
+        // add the piece that is being placed to the game manager array
         manager.addPiece(game.getDragging());
 
         // Increment score because bird was placed

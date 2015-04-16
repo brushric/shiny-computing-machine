@@ -55,12 +55,4 @@ public class GameView extends View {
     public Game getGame() {
         return game;
     }
-
-    public void saveXml(XmlSerializer xml) throws IOException {
-        game.saveXml(xml);
-    }
-
-    public void loadXml(XmlPullParser xml)throws IOException, XmlPullParserException {
-        game.loadXml(xml);
-    }
 }

@@ -1,8 +1,14 @@
 package edu.msu.brushric.theflockinggame;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +16,7 @@ import java.util.ArrayList;
  * This class manages the state of the game. it implements parcable to
  * allow us to pass the object in a bundle from activity to activity
  */
-public class GameManager implements Parcelable{
+public class GameManager implements Parcelable {
 
     public static int NEWGAME = 0;
     public static int PLACEMENT = 1;
@@ -21,8 +27,14 @@ public class GameManager implements Parcelable{
     public final static String PASSWORD = "password";
 
     private int currWaitType = 0;
-    public int getCurrWaitType() { return currWaitType; }
-    public void setCurrWaitType(int type) { currWaitType = type; }
+
+    public int getCurrWaitType() {
+        return currWaitType;
+    }
+
+    public void setCurrWaitType(int type) {
+        currWaitType = type;
+    }
 
     public GameManager() {
     }
@@ -41,8 +53,9 @@ public class GameManager implements Parcelable{
      */
     private int playerTwoBird;
 
-    /** Number of birds placed
-     *  Starts at 0
+    /**
+     * Number of birds placed
+     * Starts at 0
      */
     private int score = 0;
 
@@ -69,15 +82,21 @@ public class GameManager implements Parcelable{
 
     private boolean imFirstPlayer = true;
 
-    public void setImFirstPlayer(boolean val) { this.imFirstPlayer = val; }
+    public void setImFirstPlayer(boolean val) {
+        this.imFirstPlayer = val;
+    }
 
-    public boolean getImFirstPlayer() { return imFirstPlayer; }
+    public boolean getImFirstPlayer() {
+        return imFirstPlayer;
+    }
 
     public void setWinner(String winner) {
         this.winner = winner;
     }
 
-    public String getWinner() { return winner; }
+    public String getWinner() {
+        return winner;
+    }
 
     private String winner;
 
@@ -89,7 +108,7 @@ public class GameManager implements Parcelable{
         this.arrayList = arrayList;
     }
 
-    public void addPiece(BirdPiece p){
+    public void addPiece(BirdPiece p) {
         arrayList.add(p);
     }
 
@@ -109,7 +128,9 @@ public class GameManager implements Parcelable{
         this.playerTwoBird = playerTwoBird;
     }
 
-    public boolean GetPlayerOneFirst(){ return round % 2 == 1;}
+    public boolean GetPlayerOneFirst() {
+        return round % 2 == 1;
+    }
 
     @Override
     public int describeContents() {
@@ -143,9 +164,10 @@ public class GameManager implements Parcelable{
 
     /**
      * Private constructor for the parcablizer which will parcabalize all members
+     *
      * @param in a parcel to put everything into
      */
-    private GameManager(Parcel in){
+    private GameManager(Parcel in) {
         imFirstPlayer = in.readInt() == 1;
         winner = in.readString();
         playerOneBird = in.readInt();
@@ -155,4 +177,45 @@ public class GameManager implements Parcelable{
         score = in.readInt();
     }
 
+    public void saveXml(XmlSerializer xml) throws IOException {
+
+        for (BirdPiece item : arrayList) {
+            xml.startTag(null, "bird");
+            xml.attribute(null, "type", Integer.toString(item.getType()));
+            xml.attribute(null, "x", Float.toString(item.getX()));
+            xml.attribute(null, "y", Float.toString(item.getY()));
+            xml.endTag(null, "bird");
+        }
+        xml.startTag(null, "score");
+        xml.attribute(null, "score", Integer.toString(score));
+        xml.endTag(null, "score");
+    }
+
+    public void loadXml(XmlPullParser xml) throws IOException, XmlPullParserException {
+
+        // Create a new set of birds
+        final ArrayList<BirdPiece> newBirds = new ArrayList<BirdPiece>();
+        int type = 0;
+
+        GameActivity gameActivity = new GameActivity();
+        while (xml.nextTag() == XmlPullParser.START_TAG) {
+            if (xml.getName().equals("bird")) {
+                type = Integer.parseInt(xml.getAttributeValue(null, "type"));
+
+                BirdPiece piece = new BirdPiece(gameActivity,type);
+
+                piece.setX(Float.parseFloat(xml.getAttributeValue(null, "x")));
+                piece.setY(Float.parseFloat(xml.getAttributeValue(null, "y")));
+                newBirds.add(piece);
+            } else if (xml.getName().equals("score")) {
+                setScore(Integer.parseInt(xml.getAttributeValue(null, "score")));
+            }
+        }
+        new Runnable() {
+            @Override
+            public void run() {
+                arrayList = newBirds;
+            }
+        };
+    }
 }
