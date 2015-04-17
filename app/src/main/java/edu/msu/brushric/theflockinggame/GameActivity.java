@@ -87,6 +87,14 @@ public class GameActivity extends ActionBarActivity {
         // Increment score because bird was placed
         manager.setScore(manager.getScore() + 1);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Cloud cloud = new Cloud();
+                final boolean ok = cloud.saveBoard(manager);
+            }
+        }).start();
+
         NextRound();
     }
 
@@ -134,6 +142,8 @@ public class GameActivity extends ActionBarActivity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(GameManager.REMEMBER, false);
         editor.commit();
+
+        manager.logout();
 
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

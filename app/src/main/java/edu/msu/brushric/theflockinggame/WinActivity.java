@@ -18,6 +18,7 @@ public class WinActivity extends ActionBarActivity {
      */
     private GameManager manager;
     private int score;
+    private volatile boolean cancel = false;
 
     TextView scoreBox, player;
 
@@ -49,6 +50,18 @@ public class WinActivity extends ActionBarActivity {
         editor.putBoolean(manager.REMEMBER, true);
         editor.commit();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(cancel)
+                    return;
+
+                Cloud cloud = new Cloud();
+                final boolean over = cloud.gameOver();
+
+            }
+        }).start();
+
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -78,11 +91,15 @@ public class WinActivity extends ActionBarActivity {
 
     public void logOut() {
 
+        manager.logout();
+
         SharedPreferences settings =
                 getSharedPreferences(manager.PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(manager.REMEMBER, false);
         editor.commit();
+
+
 
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -25,6 +25,8 @@ public class WaitActivity extends ActionBarActivity {
 
     public static String PARCELABLE = "Parceable";
     private GameManager manager;
+    private volatile boolean cancel = false;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,10 @@ public class WaitActivity extends ActionBarActivity {
             @Override
             public void run() {
                 Cloud cloud = new Cloud();
-                final String status = cloud.serverPoll();
+                final String status = cloud.serverPoll(manager.getUsername());
+
+//                if(cancel)
+//                    return;
 
                 if(status.equals("no")) {
                     delay();
@@ -73,8 +78,9 @@ public class WaitActivity extends ActionBarActivity {
     }
 
     public void delay() {
-        Handler handler = new Handler();
+        //final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
+
             public void run() {
                 executeOnDelay();
             }
@@ -93,6 +99,10 @@ public class WaitActivity extends ActionBarActivity {
                 goToSelection();
                 break;
         }
+    }
+
+    public void onCancel(){
+        //cancel = true;
     }
 
     public void goToSelection() {
@@ -129,6 +139,8 @@ public class WaitActivity extends ActionBarActivity {
         editor.putBoolean(manager.REMEMBER, false);
         editor.commit();
 
+        manager.logout();
+
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -152,9 +164,9 @@ public class WaitActivity extends ActionBarActivity {
                 Cloud cloud = new Cloud();
                 InputStream stream = cloud.loadBoard();
 
-//                if (cancel) {
-//                    return;
-//                }
+                if (cancel) {
+                    return;
+                }
 
                 // Test for an error
                 boolean fail = stream == null;
@@ -164,15 +176,15 @@ public class WaitActivity extends ActionBarActivity {
                         xml.setInput(stream, "UTF-8");
 
                         xml.nextTag();      // Advance to first tag
-                        xml.require(XmlPullParser.START_TAG, null, "board");
+                        xml.require(XmlPullParser.START_TAG, null, "toucan");
                         String status = xml.getAttributeValue(null, "status");
                         if (status.equals("yes")) {
 
                             while (xml.nextTag() == XmlPullParser.START_TAG) {
                                 if (xml.getName().equals("bird")) {
-//                                    if (cancel) {
-//                                        return;
-//                                    }
+                                    if (cancel) {
+                                        return;
+                                    }
 
                                     // load the game
                                     manager.loadXml(xml);

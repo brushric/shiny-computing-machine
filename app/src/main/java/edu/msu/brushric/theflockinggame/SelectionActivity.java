@@ -129,6 +129,8 @@ public class SelectionActivity extends ActionBarActivity {
         editor.putBoolean(GameManager.REMEMBER, false);
         editor.commit();
 
+        manager.logout();
+
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

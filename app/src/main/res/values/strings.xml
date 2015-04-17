@@ -44,5 +44,6 @@
     <string name="remember">Remember</string>
     <string name="test">Test to Next Scene</string>
     <string name="logout">Log Out</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

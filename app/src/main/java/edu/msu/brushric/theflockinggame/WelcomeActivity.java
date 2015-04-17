@@ -49,7 +49,7 @@ public class WelcomeActivity extends ActionBarActivity {
             mUserView.setText(userString);
             mPasswordView.setText(passString);
             rememberCheck.setChecked(true);
-            logIn(userString, passString, findViewById(R.id.frameWelcome));
+            //logIn(userString, passString, findViewById(R.id.frameWelcome));
         }
     }
 
@@ -125,6 +125,7 @@ public class WelcomeActivity extends ActionBarActivity {
     public void onLogIn(View view) {
         // Store values at the time of the login attempt.
         String username = mUserView.getText().toString();
+        manager.setUsername(username);
         String password = mPasswordView.getText().toString();
         logIn(username, password, view);
     }

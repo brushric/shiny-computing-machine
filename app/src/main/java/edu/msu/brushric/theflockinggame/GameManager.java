@@ -59,6 +59,16 @@ public class GameManager implements Parcelable {
      */
     private int score = 0;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String username;
+
     public int getScore() {
         return score;
     }
@@ -98,7 +108,7 @@ public class GameManager implements Parcelable {
         return winner;
     }
 
-    private String winner;
+    private String winner = "";
 
     public ArrayList<BirdPiece> getArrayList() {
         return arrayList;
@@ -146,6 +156,7 @@ public class GameManager implements Parcelable {
         dest.writeTypedList(arrayList);
         dest.writeInt(round);
         dest.writeInt(score);
+        dest.writeString(username);
     }
 
     /**
@@ -175,6 +186,7 @@ public class GameManager implements Parcelable {
         arrayList = in.createTypedArrayList(BirdPiece.CREATOR);
         round = in.readInt();
         score = in.readInt();
+        username = in.readString();
     }
 
     public void saveXml(XmlSerializer xml) throws IOException {
@@ -217,5 +229,17 @@ public class GameManager implements Parcelable {
                 arrayList = newBirds;
             }
         };
+    }
+
+    public void logout(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Cloud cloud = new Cloud();
+                final boolean over = cloud.logoutUser(username);
+
+            }
+        }).start();
     }
 }
