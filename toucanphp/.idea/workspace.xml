@@ -25,21 +25,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="toucan-store-game-state.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-store-game-state.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
-              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="-18.961538" vertical-offset="204" max-vertical-offset="986">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+              <folding>
+                <marker date="1429238112378" expanded="true" signature="515:544" placeholder="select * fro..toucangamestate..." />
+                <marker date="1429238112378" expanded="true" signature="641:707" placeholder="insert into ..." />
+                <marker date="1429238112378" expanded="true" signature="920:971" placeholder="update touca..." />
+                <marker date="1429238112378" expanded="true" signature="920:985" placeholder="update touca..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.inc.php">
+      <file leaf-file-name="toucan-get-game-state.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/toucan-get-game-state.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.75814754" vertical-offset="459" max-vertical-offset="1207">
+              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+              <folding>
+                <marker date="1429239211808" expanded="true" signature="438:506" placeholder="select * fro..toucanuser..." />
+                <marker date="1429239211808" expanded="true" signature="444:473" placeholder="select * fro..toucangamestate..." />
+                <marker date="1429239211808" expanded="true" signature="530:560" placeholder="select * fro..toucanactiveuser..." />
+                <marker date="1429239211808" expanded="true" signature="1120:1260" placeholder="..." />
+                <marker date="1429239211808" expanded="true" signature="1219:1260" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toucan-load-game-state.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-load-game-state.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.846153" vertical-offset="199" max-vertical-offset="782">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding>
+                <marker date="1429239071932" expanded="true" signature="426:455" placeholder="select * fro..toucangamestate..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toucan-game-over.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-game-over.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.884615" vertical-offset="46" max-vertical-offset="697">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+              <folding>
+                <marker date="1429212720270" expanded="true" signature="397:425" placeholder="DELETE FROM ..." />
+                <marker date="1429212720270" expanded="true" signature="470:497" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toucan-logout.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="748">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <marker date="1429212701919" expanded="true" signature="496:537" placeholder="select * fro..toucanuser..." />
+                <marker date="1429212701919" expanded="true" signature="342:386" placeholder="select * fro..toucanactiveuser..." />
+                <marker date="1429212701919" expanded="true" signature="386:452" placeholder="insert into ..." />
+                <marker date="1429212701919" expanded="true" signature="445:518" placeholder="insert into ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toucan-login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5" vertical-offset="510" max-vertical-offset="1190">
+              <caret line="43" column="97" selection-start-line="43" selection-start-column="97" selection-end-line="43" selection-end-column="97" />
+              <folding>
+                <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+                <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+                <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+                <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="poll.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poll.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="578">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -48,26 +124,35 @@
       <file leaf-file-name="toucan-new-user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.576923" vertical-offset="0" max-vertical-offset="748">
-              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+            <state vertical-scroll-proportion="-20.923077" vertical-offset="0" max-vertical-offset="748">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toucan-player-check.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toucan-player-check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.615385" vertical-offset="148" max-vertical-offset="850">
+              <caret line="28" column="32" selection-start-line="26" selection-start-column="4" selection-end-line="28" selection-end-column="32" />
               <folding>
-                <marker date="1428351343070" expanded="true" signature="521:588" placeholder="insert into ..." />
+                <marker date="1429208265074" expanded="true" signature="164:217" placeholder="select * fro..toucanactiveuser..." />
+                <marker date="1429208265074" expanded="true" signature="302:377" placeholder="insert into ..." />
+                <marker date="1429208265074" expanded="true" signature="339:414" placeholder="insert into ..." />
+                <marker date="1429208265074" expanded="true" signature="510:540" placeholder="select * fro..toucanactiveuser..." />
+                <marker date="1429208265074" expanded="true" signature="510:540" placeholder="select * fro..toucanactiveuser..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toucan-login.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/toucan-login.php">
+      <file leaf-file-name="db.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79518074" vertical-offset="184" max-vertical-offset="901">
-              <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="43" selection-end-column="1" />
-              <folding>
-                <marker date="1428351535250" expanded="true" signature="558:565" placeholder="select '$', ..hatting..." />
-                <marker date="1428351535250" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
-                <marker date="1428351535250" expanded="true" signature="643:717" placeholder="insert into ..." />
-                <marker date="1428351535250" expanded="true" signature="1004:1014" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="357">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +163,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/poll.php" />
         <option value="$PROJECT_DIR$/toucan-new-user.php" />
+        <option value="$PROJECT_DIR$/toucan-globals.php" />
+        <option value="$PROJECT_DIR$/toucan-start-game.php" />
+        <option value="$PROJECT_DIR$/db.inc.php" />
+        <option value="$PROJECT_DIR$/toucan-game-state.php" />
+        <option value="$PROJECT_DIR$/toucan-player-check.php" />
         <option value="$PROJECT_DIR$/toucan-login.php" />
+        <option value="$PROJECT_DIR$/toucan-logout.php" />
+        <option value="$PROJECT_DIR$/toucan-game-over.php" />
+        <option value="$PROJECT_DIR$/toucan-store-game-state.php" />
+        <option value="$PROJECT_DIR$/toucan-load-game-state.php" />
+        <option value="$PROJECT_DIR$/toucan-get-game-state.php" />
       </list>
     </option>
   </component>
@@ -116,6 +212,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -136,7 +233,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,13 +246,20 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Libraries\Documents\CSE476\toucanphp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.toucan-game-over.php">
+    <configuration default="false" name="toucan-game-over.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-game-over.php">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method />
@@ -183,9 +286,19 @@
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="07124b78-0b3c-422b-bb05-0d7e64461353" server_name="cse476-toucan">
       <method />
     </configuration>
-    <list size="0" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.toucan-game-over.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.toucan-game-over.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="68ed746b-4d8c-42cf-9b7e-78835856faf4" name="Default" comment="" />
@@ -199,27 +312,27 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32946146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3273495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.171875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -243,11 +356,193 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/toucan-store-game-state.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="246" max-vertical-offset="986">
+          <caret line="22" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <marker date="1429238112378" expanded="true" signature="515:544" placeholder="select * fro..toucangamestate..." />
+            <marker date="1429238112378" expanded="true" signature="641:707" placeholder="insert into ..." />
+            <marker date="1429238112378" expanded="true" signature="920:971" placeholder="update touca..." />
+            <marker date="1429238112378" expanded="true" signature="920:985" placeholder="update touca..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-get-game-state.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="850">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <marker date="1429239211808" expanded="true" signature="438:506" placeholder="select * fro..toucanuser..." />
+            <marker date="1429239211808" expanded="true" signature="444:473" placeholder="select * fro..toucangamestate..." />
+            <marker date="1429239211808" expanded="true" signature="530:560" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429239211808" expanded="true" signature="1120:1260" placeholder="..." />
+            <marker date="1429239211808" expanded="true" signature="1219:1260" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-game-over.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="629">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <marker date="1429212720270" expanded="true" signature="397:425" placeholder="DELETE FROM ..." />
+            <marker date="1429212720270" expanded="true" signature="470:497" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="748">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
           <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="748">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14" max-vertical-offset="578">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="748">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="748">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -263,9 +558,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1428351343070" expanded="true" signature="521:588" placeholder="insert into ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -274,10 +567,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="884">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <marker date="1428351535250" expanded="true" signature="558:565" placeholder="select '$', ..hatting..." />
-            <marker date="1428351535250" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
-            <marker date="1428351535250" expanded="true" signature="643:717" placeholder="insert into ..." />
-            <marker date="1428351535250" expanded="true" signature="1004:1014" placeholder="..." />
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
@@ -286,37 +579,117 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="255">
           <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.inc.php">
+    <entry file="file://$PROJECT_DIR$/poll.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="578">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/toucan-new-user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.576923" vertical-offset="0" max-vertical-offset="748">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        <state vertical-scroll-proportion="-20.923077" vertical-offset="0" max-vertical-offset="748">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="357">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-player-check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.615385" vertical-offset="148" max-vertical-offset="850">
+          <caret line="28" column="32" selection-start-line="26" selection-start-column="4" selection-end-line="28" selection-end-column="32" />
           <folding>
-            <marker date="1428351343070" expanded="true" signature="521:588" placeholder="insert into ..." />
+            <marker date="1429208265074" expanded="true" signature="164:217" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429208265074" expanded="true" signature="302:377" placeholder="insert into ..." />
+            <marker date="1429208265074" expanded="true" signature="339:414" placeholder="insert into ..." />
+            <marker date="1429208265074" expanded="true" signature="510:540" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429208265074" expanded="true" signature="510:540" placeholder="select * fro..toucanactiveuser..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="748">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <marker date="1429212701919" expanded="true" signature="496:537" placeholder="select * fro..toucanuser..." />
+            <marker date="1429212701919" expanded="true" signature="342:386" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429212701919" expanded="true" signature="386:452" placeholder="insert into ..." />
+            <marker date="1429212701919" expanded="true" signature="445:518" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-game-over.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.884615" vertical-offset="46" max-vertical-offset="697">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding>
+            <marker date="1429212720270" expanded="true" signature="397:425" placeholder="DELETE FROM ..." />
+            <marker date="1429212720270" expanded="true" signature="470:497" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/toucan-login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79518074" vertical-offset="184" max-vertical-offset="901">
-          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="43" selection-end-column="1" />
+        <state vertical-scroll-proportion="-8.5" vertical-offset="510" max-vertical-offset="1190">
+          <caret line="43" column="97" selection-start-line="43" selection-start-column="97" selection-end-line="43" selection-end-column="97" />
           <folding>
-            <marker date="1428351535250" expanded="true" signature="558:565" placeholder="select '$', ..hatting..." />
-            <marker date="1428351535250" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
-            <marker date="1428351535250" expanded="true" signature="643:717" placeholder="insert into ..." />
-            <marker date="1428351535250" expanded="true" signature="1004:1014" placeholder="..." />
+            <marker date="1429210573490" expanded="true" signature="558:626" placeholder="select * fro..toucanuser..." />
+            <marker date="1429210573490" expanded="true" signature="910:963" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429210573490" expanded="true" signature="1076:1151" placeholder="insert into ..." />
+            <marker date="1429210573490" expanded="true" signature="1206:1281" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-store-game-state.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.961538" vertical-offset="204" max-vertical-offset="986">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <marker date="1429238112378" expanded="true" signature="515:544" placeholder="select * fro..toucangamestate..." />
+            <marker date="1429238112378" expanded="true" signature="641:707" placeholder="insert into ..." />
+            <marker date="1429238112378" expanded="true" signature="920:971" placeholder="update touca..." />
+            <marker date="1429238112378" expanded="true" signature="920:985" placeholder="update touca..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-load-game-state.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.846153" vertical-offset="199" max-vertical-offset="782">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <marker date="1429239071932" expanded="true" signature="426:455" placeholder="select * fro..toucangamestate..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toucan-get-game-state.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75814754" vertical-offset="459" max-vertical-offset="1207">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+          <folding>
+            <marker date="1429239211808" expanded="true" signature="438:506" placeholder="select * fro..toucanuser..." />
+            <marker date="1429239211808" expanded="true" signature="444:473" placeholder="select * fro..toucangamestate..." />
+            <marker date="1429239211808" expanded="true" signature="530:560" placeholder="select * fro..toucanactiveuser..." />
+            <marker date="1429239211808" expanded="true" signature="1120:1260" placeholder="..." />
+            <marker date="1429239211808" expanded="true" signature="1219:1260" placeholder="..." />
           </folding>
         </state>
       </provider>
