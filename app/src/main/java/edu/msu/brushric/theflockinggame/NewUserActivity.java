@@ -14,11 +14,10 @@ import android.widget.Toast;
 
 public class NewUserActivity extends ActionBarActivity {
 
-
-    private UserCreateTask mAuthTask = null;
     private EditText mUserView;
     private EditText mPassword1View;
     private EditText mPassword2View;
+    private volatile boolean cancel = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +49,12 @@ public class NewUserActivity extends ActionBarActivity {
      * When the user presses the create button, do basic field testing, then create
      */
     public void onCreateUser(View view) {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Store values at the time of the login attempt.
-        String username = mUserView.getText().toString();
-        String password1 = mPassword1View.getText().toString();
-        String password2 = mPassword2View.getText().toString();
+        final String username = mUserView.getText().toString();
+        final String password1 = mPassword1View.getText().toString();
+        final String password2 = mPassword2View.getText().toString();
 
-        boolean cancel = false;
+        cancel = false;
 
         // Check for a valid username/pass
         if (TextUtils.isEmpty(username)) {
@@ -79,53 +74,29 @@ public class NewUserActivity extends ActionBarActivity {
             cancel = true;
         }
 
-        // only continue to auth if not canceled
-        if(!cancel) {
-            mAuthTask = new UserCreateTask(username, password1);
-            mAuthTask.execute((Void) null);
-        }
-    }
+        final View finalView = view;
+        // add user in new thread
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(cancel)
+                    return;
 
+                Cloud cloud = new Cloud();
+                final boolean ok = cloud.addNewUser(username, password1);
 
-    /**
-     * Attempts user log in through a task
-     */
-    public class UserCreateTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mUser;
-        private final String mPassword;
-
-        UserCreateTask(String user, String password) {
-            mUser = user;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt to create user using mUser and mPassword, if failure, return false
-            Cloud cloud = new Cloud();
-            boolean ok = cloud.addNewUser(mUser, mPassword);
-            if(!ok){
-                return false;
+                finalView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!ok){
+                            ShowToast(2);
+                        } else {
+                            goBack();
+                        }
+                    }
+                });
             }
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-
-            if (success) {
-                goBack();
-            } else {
-                ShowToast(2);
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-        }
+        }).start();
     }
 
     public void goBack() {

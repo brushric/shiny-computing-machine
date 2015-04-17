@@ -2,12 +2,12 @@ package edu.msu.brushric.theflockinggame;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,10 +25,10 @@ public class WelcomeActivity extends ActionBarActivity {
      */
     private GameManager manager = new GameManager();
 
-    private UserLoginTask mAuthTask = null;
-
     private EditText mUserView;
     private EditText mPasswordView;
+    private CheckBox rememberCheck;
+    private volatile boolean cancel = false;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -37,34 +37,44 @@ public class WelcomeActivity extends ActionBarActivity {
 
         mUserView = (EditText) findViewById(R.id.usernameText);
         mPasswordView = (EditText) findViewById(R.id.passwordText);
+        rememberCheck = (CheckBox) findViewById(R.id.rememberBox);
+
+        SharedPreferences settings =
+                getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
+        boolean remember = settings.getBoolean(GameManager.REMEMBER, false);
+
+        if(remember) {
+            String userString = settings.getString(GameManager.USERNAME, "");
+            String passString = settings.getString(GameManager.PASSWORD, "");
+            mUserView.setText(userString);
+            mPasswordView.setText(passString);
+            rememberCheck.setChecked(true);
+            //logIn(userString, passString, findViewById(R.id.frameWelcome));
+        }
     }
 
     /**
-     * OnClick method for the start button this will check if the user names
-     * are valid, if they are not it will show a tost telling the user to
-     * enter valid names. if they are valid they will add them to the game manager and
-     * start the selection activity
+     * On click the remember checkbox
      * @param view that was clicked
      */
-    /*public void onStart(View view) {
-        Intent intent = new Intent(this, SelectionActivity.class);
-        Bundle b = new Bundle();
+    public void onRemember(View view) {
+        if(rememberCheck.isChecked()) {
+            SharedPreferences settings =
+                    getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(GameManager.REMEMBER, true);
+            editor.putString(GameManager.USERNAME, mUserView.getText().toString());
+            editor.putString(GameManager.PASSWORD, mPasswordView.getText().toString());
+            editor.commit();
+        } else {
 
-        if(!playerOne.getText().toString().equals("")) {
-            manager.setPlayerOneName(playerOne.getText().toString());
-
-            if (!playerTwo.getText().toString().equals("")){
-                manager.setPlayerTwoName(playerTwo.getText().toString());
-                b.putParcelable(PARCELABLE, manager);
-                intent.putExtras(b);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-
-            else ShowToast(2);
+            SharedPreferences settings =
+                    getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(GameManager.REMEMBER, false);
+            editor.commit();
         }
-        else ShowToast(1);
-    }*/
+    }
 
     /**
      * on click function for the help button
@@ -113,15 +123,17 @@ public class WelcomeActivity extends ActionBarActivity {
      * beginning authentication task
      */
     public void onLogIn(View view) {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Store values at the time of the login attempt.
         String username = mUserView.getText().toString();
+        manager.setUsername(username);
         String password = mPasswordView.getText().toString();
+        logIn(username, password, view);
+    }
 
-        boolean cancel = false;
+    void logIn(String u, String p, View view) {
+        final String username = u;
+        final String password = p;
+        cancel = false;
 
         // Check for a valid username/pass
         if (TextUtils.isEmpty(username)) {
@@ -133,57 +145,46 @@ public class WelcomeActivity extends ActionBarActivity {
             cancel = true;
         }
 
+        final View finalView = view;
         // only continue to auth if not canceled
-        if(!cancel) {
-            mAuthTask = new UserLoginTask(username, password);
-            mAuthTask.execute((Void) null);
-        }
-    }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(cancel)
+                    return;
 
+                Cloud cloud = new Cloud();
+                final boolean ok = cloud.loginUser(username, password);
 
-    /**
-     * Attempts user log in through a task
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+                finalView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!ok){
+                            ShowToast(2);
+                        } else {
+                            goToWait();
+                        }
+                    }
+                });
 
-        private final String mUser;
-        private final String mPassword;
-
-        UserLoginTask(String user, String password) {
-            mUser = user;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication using mUser and mPassword, if failure, return false
-            Cloud cloud = new Cloud();
-            boolean ok = cloud.loginUser(mUser, mPassword);
-            if(!ok){
-                return false;
             }
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-
-            if (success) {
-                goToWait();
-            } else {
-                ShowToast(2);
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-        }
+        }).start();
     }
 
     public void goToWait() {
+        Bundle b = new Bundle();
+
+        // if there's a player on the server ready to play,
+        // hook up with them then go to selection
+        // set manager.setImFirstPlayer to false
+
+        // if we're the first one, go to wait
         Intent intent = new Intent(this, WaitActivity.class);
+        manager.setImFirstPlayer(true);
+        manager.setCurrWaitType(GameManager.NEWGAME);
+        b.putParcelable(PARCELABLE, manager);
+        intent.putExtras(b);
         startActivity(intent);
+        finish();
     }
 }

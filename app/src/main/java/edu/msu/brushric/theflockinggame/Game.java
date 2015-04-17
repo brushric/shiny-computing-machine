@@ -9,6 +9,11 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game {
