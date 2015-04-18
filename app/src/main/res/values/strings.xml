@@ -3,10 +3,6 @@
 
     <string name="app_name">The Flocking Game</string>
     <string name="welcome">Welcome to the Flocking Game!</string>
-    <string name="first_name">Player One</string>
-    <string name="second_name">Player Two</string>
-    <string name="start">Start Game</string>
-    <string name="name">Name Here</string>
     <string name="wins">Winner: </string>
     <string name="score">Score:</string>
     <string name="title_activity_selection">Bird Selection</string>
@@ -27,7 +23,6 @@
         Players will then select the bird they wish to place on the screen.
         Player one will select firs then pass the phone to player 2 who will also pick a bird.
         Once both birds are selected player 1 will place their bird then player 2.</string>
-    <string name="selecting">Currently Selecting: </string>
     <string name="placing">Place your bird</string>
     <string name="prompt_user">Username </string>
     <string name="sign_in">Sign In</string>
@@ -42,8 +37,8 @@
     <string name="new_user_header">Create New User</string>
     <string name="create_user">Create</string>
     <string name="remember">Remember</string>
-    <string name="test">Test to Next Scene</string>
     <string name="logout">Log Out</string>
     <string name="cancel">Cancel</string>
+    <string name="loading">Loading</string>
 
 </resources>

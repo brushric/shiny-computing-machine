@@ -18,15 +18,18 @@ public class SelectionActivity extends ActionBarActivity {
      */
     private GameManager manager;
 
+    private boolean load = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         // get the bundle that was passed
         Bundle b = this.getIntent().getExtras();
-        if(b!=null)
+        if(b!=null) {
             // set the manager from the bundle
             manager = b.getParcelable(WelcomeActivity.PARCELABLE);
-
+            load = b.getBoolean("LOAD");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
@@ -92,12 +95,15 @@ public class SelectionActivity extends ActionBarActivity {
      */
     private void NextTurn(int player, int bird, boolean game){
         Bundle b = new Bundle();
-        if(player == 1) manager.setPlayerOneBird(bird);
-        else manager.setPlayerTwoBird(bird);
+//        if(player == 1) manager.setPlayerOneBird(bird);
+//        else manager.setPlayerTwoBird(bird);
+        manager.setPlayerOneBird(bird);
+        manager.setPlayerTwoBird(bird);
 
         manager.setCurrWaitType(GameManager.PLACEMENT);
 
         b.putParcelable(WelcomeActivity.PARCELABLE, manager);
+        b.putBoolean("LOAD", load);
         Intent intent = new Intent(this, GameActivity.class).putExtras(b);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -127,7 +133,7 @@ public class SelectionActivity extends ActionBarActivity {
                 getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(GameManager.REMEMBER, false);
-        editor.commit();
+        editor.apply();
 
         manager.logout();
 

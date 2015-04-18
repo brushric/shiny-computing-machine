@@ -15,20 +15,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/test"
-        android:id="@+id/testButton"
-        android:layout_below="@+id/waitText"
-        android:layout_centerHorizontal="true"
-        android:onClick="goToNextActivity"
-        android:nestedScrollingEnabled="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/cancel"
         android:id="@+id/buttonCancel"
         android:nestedScrollingEnabled="false"
-        android:layout_below="@+id/testButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onCancel"
+        android:layout_below="@+id/waitText" />
 
 </RelativeLayout>

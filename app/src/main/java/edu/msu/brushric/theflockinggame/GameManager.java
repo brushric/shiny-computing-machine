@@ -191,6 +191,7 @@ public class GameManager implements Parcelable {
 
     public void saveXml(XmlSerializer xml) throws IOException {
 
+        //xml.startTag(null, "birds");
         for (BirdPiece item : arrayList) {
             xml.startTag(null, "bird");
             xml.attribute(null, "type", Integer.toString(item.getType()));
@@ -198,23 +199,24 @@ public class GameManager implements Parcelable {
             xml.attribute(null, "y", Float.toString(item.getY()));
             xml.endTag(null, "bird");
         }
+        //xml.endTag(null, "birds");
         xml.startTag(null, "score");
         xml.attribute(null, "score", Integer.toString(score));
         xml.endTag(null, "score");
     }
 
-    public void loadXml(XmlPullParser xml) throws IOException, XmlPullParserException {
+    public void loadXml(XmlPullParser xml, Context context) throws IOException, XmlPullParserException {
 
         // Create a new set of birds
         final ArrayList<BirdPiece> newBirds = new ArrayList<BirdPiece>();
         int type = 0;
 
-        GameActivity gameActivity = new GameActivity();
         while (xml.nextTag() == XmlPullParser.START_TAG) {
+            //while (xml.nextTag() != XmlPullParser.END_DOCUMENT) {
             if (xml.getName().equals("bird")) {
                 type = Integer.parseInt(xml.getAttributeValue(null, "type"));
 
-                BirdPiece piece = new BirdPiece(gameActivity,type);
+                BirdPiece piece = new BirdPiece(context, type);
 
                 piece.setX(Float.parseFloat(xml.getAttributeValue(null, "x")));
                 piece.setY(Float.parseFloat(xml.getAttributeValue(null, "y")));
@@ -222,13 +224,10 @@ public class GameManager implements Parcelable {
             } else if (xml.getName().equals("score")) {
                 setScore(Integer.parseInt(xml.getAttributeValue(null, "score")));
             }
+            xml.nextTag();
         }
-        new Runnable() {
-            @Override
-            public void run() {
-                arrayList = newBirds;
-            }
-        };
+
+        arrayList = newBirds;
     }
 
     public void logout(){

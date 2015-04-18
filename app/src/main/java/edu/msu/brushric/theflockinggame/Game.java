@@ -109,6 +109,7 @@ public class Game {
     public void initializeBirds(GameManager manager, BirdPiece draggingPiece) {
         // loop through all the existing pieces and set the bitmap for them in a temp array
         // so they can be drawn
+        birds.clear();
         for ( BirdPiece item : manager.getArrayList()){
             BirdPiece piece = new BirdPiece(gameActivity, item.getType());
             piece.setX(item.getX());

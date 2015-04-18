@@ -30,14 +30,22 @@ import java.util.ArrayList;
  * Created by Gamer on 3/18/2015.
  */
 public class Cloud {
+//    private static final String MAGIC = "NechAtHa6RuzeR8x";
+//    private static final String LOGIN_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-login.php";
+//    private static final String LOGOUT_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-logout.php";
+//    private static final String NEW_USER_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-new-user.php";
+//    private static final String LOAD_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-load-game-state.php";
+//    private static final String SAVE_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-store-game-state.php";
+//    private static final String POLLING_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-get-game-state.php";
+//    private static final String GAME_OVER_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-game-over.php";
     private static final String MAGIC = "NechAtHa6RuzeR8x";
-    private static final String LOGIN_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-login.php";
-    private static final String LOGOUT_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-logout.php";
-    private static final String NEW_USER_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-new-user.php";
-    private static final String LOAD_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-load-game-state.php";
-    private static final String SAVE_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-store-game-state.php";
-    private static final String POLLING_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/get-game-state.php";
-    private static final String GAME_OVER_URL = "http://webdev.cse.msu.edu/~sarteleb/cse476/toucan/toucan-game-over.php";
+    private static final String LOGIN_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-login.php";
+    private static final String LOGOUT_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-logout.php";
+    private static final String NEW_USER_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-new-user.php";
+    private static final String LOAD_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-load-game-state.php";
+    private static final String SAVE_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-store-game-state.php";
+    private static final String POLLING_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-get-game-state.php";
+    private static final String GAME_OVER_URL = "http://webdev.cse.msu.edu/~brushric/cse476/toucan/toucan-game-over.php";
     private static final String UTF8 = "UTF-8";
 
     /**
@@ -54,7 +62,7 @@ public class Cloud {
         {
             tag = xml.next();
             if(tag == XmlPullParser.START_TAG) {
-                // Recurse over any start tag
+                //Recurse over any start tag
                 skipToEndTag(xml);
             }
         } while(tag != XmlPullParser.END_TAG &&
@@ -256,11 +264,11 @@ public class Cloud {
 
             xml.startDocument("UTF-8", true);
 
-            xml.startTag(null, "toucan");
-            xml.attribute(null, "magic", MAGIC);
+            //xml.startTag(null, "toucan");
+            //xml.attribute(null, "magic", MAGIC);
             manager.saveXml(xml);
 
-            xml.endTag(null, "toucan");
+            //xml.endTag(null, "toucan");
 
             xml.endDocument();
 
@@ -276,7 +284,7 @@ public class Cloud {
          */
         String postDataStr;
         try {
-            postDataStr = "xml=" + URLEncoder.encode(xmlStr, "UTF-8");
+            postDataStr = "xml=" + URLEncoder.encode(xmlStr.substring(56), "UTF-8");
         } catch (UnsupportedEncodingException e) {
             return false;
         }
@@ -284,7 +292,7 @@ public class Cloud {
         /*
          * Send the data to the server
          */
-        byte[] postData = postDataStr.getBytes();
+        //byte[] postData = postDataStr.getBytes();
 
         InputStream stream = null;
         try {
@@ -295,19 +303,18 @@ public class Cloud {
                 win = "1";
             }
             String user = manager.getUsername();
-            String query = SAVE_URL + "?&user=" + user + "&win=" + win;
+            String query = SAVE_URL + "?user=" + user + "&win=" + win + "&magic=" + MAGIC + "&"+postDataStr;
             URL url = new URL(query);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
-            conn.setUseCaches(false);
-
-            OutputStream out = conn.getOutputStream();
-            out.write(postData);
-            out.close();
+//            conn.setDoOutput(true);
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Length", Integer.toString(postData.length));
+//            conn.setUseCaches(false);
+//
+//            OutputStream out = conn.getOutputStream();
+//            out.write(postData);
+//            out.close();
 
             int responseCode = conn.getResponseCode();
             if(responseCode != HttpURLConnection.HTTP_OK) {
@@ -333,6 +340,7 @@ public class Cloud {
                 xmlR.require(XmlPullParser.START_TAG, null, "toucan");
 
                 String status = xmlR.getAttributeValue(null, "status");
+                String msg = xmlR.getAttributeValue(null, "msg");
                 if(status.equals("no")) {
                     return false;
                 }
@@ -367,14 +375,14 @@ public class Cloud {
     public String serverPoll(String user) {
         // Create a get query
         String query = POLLING_URL + "?magic=" + MAGIC + "&user=" + user;
-
+        String result = "";
         try {
             URL url = new URL(query);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             int responseCode = conn.getResponseCode();
             if(responseCode != HttpURLConnection.HTTP_OK) {
-                return "no";
+                result = "no";
             }
 
             InputStream stream = conn.getInputStream();
@@ -391,31 +399,37 @@ public class Cloud {
 
                 String status = xmlR.getAttributeValue(null, "status");
                 if(status.equals("no")) {
-                    return "no";
+                    result = "no";
                 }else if(status.equals("yes")) {
-                    return "yes";
+                    result = "yes";
                 }else if(status.equals("winner")) {
-                    return "winner";
-                }if(status.equals("update")) {
-                    return "update";
+                    result = "winner";
+                }else if(status.equals("update")) {
+                    result = "update";
                 }
 
+                return result;
                 // We are done
             } catch(XmlPullParserException ex) {
-                return "no";
+                result = "no";
             } catch(IOException ex) {
-                return "no";
+                result = "no";
             }
             stream.close();
-            return "yes";
+            result = "yes";
         } catch (MalformedURLException e) {
             // Should never happen
-            return "no";
+            result = "no";
         } catch (IOException ex) {
-            return "no";
+            result = "no";
         }
+        return result;
     }
 
+    /**
+     * Tells the server to clear the active users table and the game table
+     * @return true if it worked, false otherwise
+     */
     public boolean gameOver() {
         // Create a get query
         String query = GAME_OVER_URL + "?magic=" + MAGIC;

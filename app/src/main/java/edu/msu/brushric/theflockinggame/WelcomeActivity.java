@@ -65,14 +65,14 @@ public class WelcomeActivity extends ActionBarActivity {
             editor.putBoolean(GameManager.REMEMBER, true);
             editor.putString(GameManager.USERNAME, mUserView.getText().toString());
             editor.putString(GameManager.PASSWORD, mPasswordView.getText().toString());
-            editor.commit();
+            editor.apply();
         } else {
 
             SharedPreferences settings =
                     getSharedPreferences(GameManager.PREFERENCES, MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean(GameManager.REMEMBER, false);
-            editor.commit();
+            editor.apply();
         }
     }
 

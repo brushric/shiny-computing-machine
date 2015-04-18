@@ -48,7 +48,7 @@ public class WinActivity extends ActionBarActivity {
                 getSharedPreferences(manager.PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(manager.REMEMBER, true);
-        editor.commit();
+        editor.apply();
 
         new Thread(new Runnable() {
             @Override
@@ -97,7 +97,7 @@ public class WinActivity extends ActionBarActivity {
                 getSharedPreferences(manager.PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(manager.REMEMBER, false);
-        editor.commit();
+        editor.apply();
 
 
 
